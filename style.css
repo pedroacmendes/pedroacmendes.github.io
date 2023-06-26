@@ -1,0 +1,35 @@
+.background-image {
+    position: fixed;
+    z-index: -1;
+    background: url("image.png");
+    background-size: cover;
+    background-position: center;
+    filter: blur(9px);
+    transform: scale(1.1);
+}
+
+.container {
+    max-width: 800px !important;
+}
+
+img {
+    border-radius: 50%;
+    width: 90px;
+}
+
+.div-buttons {
+    display: grid;
+    padding-top: 40px;
+}
+
+.div-buttons a {
+    margin: 10px;
+}
+
+footer {
+    padding-top: 40px;
+}
+
+footer svg {
+    width: 50px;
+}
