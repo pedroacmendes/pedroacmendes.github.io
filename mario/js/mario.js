@@ -26,6 +26,9 @@ const loop = setInterval(() => {
         mario.style.width = '75px';
         mario.style.marginLeft = '50px';
 
+        if (alert('Do you want to restart the game?')) { }
+        else window.location.reload();
+
         clearInterval(loop);
     }
 
