@@ -1,7 +1,7 @@
 .background-image {
     position: fixed;
     z-index: -1;
-    background: url("image.png");
+    background: url("/images/image.png");
     background-size: cover;
     background-position: center;
     filter: blur(9px);
