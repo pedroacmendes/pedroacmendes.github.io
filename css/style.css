@@ -26,10 +26,11 @@ img {
     margin: 10px;
 }
 
-footer {
+.div-message svg {
     padding-top: 40px;
+    width: 40px;
 }
 
-footer svg {
-    width: 50px;
+footer {
+    margin-top: 100%;
 }
