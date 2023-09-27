@@ -14,6 +14,15 @@
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 
+<style>
+    pre {
+        display: none;
+        background-color: black;
+        color: white;
+        height: 250px;
+    }
+</style>
+
 <body>
 
     <nav class="navbar navbar-dark bg-dark">
@@ -41,8 +50,133 @@
     <div class="container text-center pt-5 h-100">
         <h3>Cria aqui a tua assinatura de email</h3>
         <br>
-        Brevemente disponível
+
+        <form id="formulario">
+
+            <div class="row">
+                <div class="col">
+                    <label for="name">Escreve aqui o teu nome:</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="col">
+                    <label for="cargo">Escreve aqui o teu cargo:</label>
+                    <input type="text" class="form-control" id="cargo" name="cargo" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="name">Morada:</label>
+                    <input type="text" class="form-control" id="address" name="address">
+                </div>
+                <div class="col">
+                    <label for="cargo">Link da imagem:</label>
+                    <input type="text" class="form-control" id="image" name="image">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="website">Website:</label>
+                    <input type="text" class="form-control" id="website" name="website">
+                </div>
+                <div class="col">
+                    <label for="phone">Phone:</label>
+                    <input type="text" class="form-control" id="phone" name="phone">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success mt-3">Criar Assinatura</button>
+        </form>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-6">
+                <div id="preview"></div>
+            </div>
+
+            <div class="col-6">
+                <pre id="code"></pre>
+            </div>
+        </div>
+
     </div>
+
+
+    <script>
+        document.getElementById('formulario').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            var name = document.getElementById('name').value;
+            var cargo = document.getElementById('cargo').value;
+            var address = document.getElementById('address').value;
+            var image = document.getElementById('image').value;
+            var website = document.getElementById('website').value;
+            var phone = document.getElementById('phone').value;
+
+            var existingHTML = `<div
+        style="font-family:&quot;Times New Roman&quot;;font-size:inherit;font-style:normal;font-weight:400;letter-spacing:normal;text-align:start;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px">
+        <table cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr>
+                    <td style="vertical-align:top">
+                        <img src="` + image + `" style="width:150px">
+                    </td>
+                    <td>
+                        <div
+                            style="font-size:0.9em;white-space:nowrap;margin-left:20px;border-top-color:rgb(115,115,115);border-right-color:rgb(115,115,115);border-bottom-color:rgb(115,115,115)">
+                            <div>
+                                <div style="padding-bottom:10px">
+                                    <b style="color:#0f2d87;font-family:Verdana,Geneva,sans-serif;font-size:12px;font-weight:600">` + name + `</b>
+                                    <span style="display:block;height:5px;margin-right:0px"><br></span>
+                                    <span style="padding-top:10px;color:#1d1d1b;font-family:Verdana,Geneva,sans-serif;font-size:11px;font-weight:600">` + cargo + `</span>
+                                </div>
+                                <div style="display:flex;margin-top:5px">
+                                    <span
+                                        style="margin-right:3px;color:#1e1e1c;font-size:12px;font-family:Verdana,Geneva,sans-serif"><img
+                                            src="https://www.drible.pt/assinaturas/website.png" width="12px"
+                                            alt=""><span>&nbsp;</span></span>
+                                    <a href="` + website + `" style="color:#1e1e1c;font-family:Verdana,Geneva,sans-serif;font-size:10px;text-decoration:none;line-height:10px" target="_blank">
+                                        ` + website + `
+                                        </a>
+                                </div>
+                                <div style="display:flex;margin-top:8px">
+                                    <span style="margin-right:3px;color:#1e1e1c;font-size:12px;font-family:Verdana,Geneva,sans-serif">
+                                        <img src="https://www.drible.pt/assinaturas/phone.png" width="12px" alt=""><span>&nbsp;</span>
+                                    </span>
+                                    <div style="display:grid;padding-bottom:5px">
+                                        <a href="tel:+351` + phone + `"
+                                            style="color:#1e1e1c;font-family:Verdana,Geneva,sans-serif;font-size:10px;text-decoration:none;line-height:10px"
+                                            target="_blank">` + phone + `</a>
+                                    </div>
+                                </div>
+                                <div style="display:flex;margin-top:1px">
+                                    <span
+                                        style="margin-right:3px;color:#1e1e1c;font-size:12px;font-family:Verdana,Geneva,sans-serif;padding-top:10px">
+                                        <img src="https://www.drible.pt/assinaturas/loc.png" width="12px" alt="">
+                                        <span>&nbsp;</span></span>
+                                    <a href="https://www.google.com/maps?q=` + address + `"
+                                        style="color:#1e1e1c;font-family:Verdana,Geneva,sans-serif;font-size:10px;text-decoration:none;line-height:17px"
+                                        target="_blank">
+                                        ` + address + `
+                                        </a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>`;
+
+            document.getElementById('code').textContent = existingHTML;
+            document.getElementById('code').style.display = 'block';
+
+            document.getElementById('preview').innerHTML = existingHTML;
+
+        });
+    </script>
 
 </body>
 
