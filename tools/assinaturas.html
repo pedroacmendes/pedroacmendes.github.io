@@ -15,11 +15,13 @@
 </head>
 
 <style>
-    pre {
+    textarea {
         display: none;
         background-color: black;
         color: white;
         height: 200px;
+        width: 100%;
+        overflow: hidden;
     }
 </style>
 
@@ -27,14 +29,19 @@
 
     <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"></a>
+            <a class="navbar-brand" href="/">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FFF" class="bi bi-arrow-left"
+                    viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                </svg>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link" aria-current="page" href="/">CV</a>
                     <a class="nav-link" href="/tools/newpassword.html">Generate Password</a>
                     <a class="nav-link active" href="/tools/assinaturas.html">Email Signature</a>
                     <a class="nav-link" href="/tools/meuip.html">Get my IP</a>
@@ -44,7 +51,7 @@
     </nav>
 
     <div class="container pt-5 h-100">
-        <h3>Create your signature here</h3>
+        <h3>Create your HTML signature here</h3>
         <br>
 
         <form id="formulario">
@@ -85,6 +92,8 @@
             </div>
 
             <button type="submit" class="btn btn-success mt-3">Generate Signature</button>
+            <button id="btnCopy" onclick="copySignature()" class="btn btn-primary mt-3" style="display: none;">Copy HTML
+                Signature</button>
         </form>
 
         <div class="row mt-4">
@@ -93,7 +102,7 @@
             </div>
 
             <div class="col-6">
-                <pre id="code"></pre>
+                <textarea id="code"></textarea>
             </div>
         </div>
 
@@ -101,6 +110,15 @@
 
 
     <script>
+
+        function copySignature() {
+            var textarea = document.getElementById("code");
+            textarea.select();
+            document.execCommand("copy");
+
+            textarea.disabled = true;
+        }
+
         document.getElementById('formulario').addEventListener('submit', function (e) {
             e.preventDefault();
 
@@ -177,6 +195,7 @@
 
             document.getElementById('code').textContent = existingHTML;
             document.getElementById('code').style.display = 'block';
+            document.getElementById('btnCopy').style.display = 'initial';
 
             document.getElementById('preview').innerHTML = existingHTML;
 
